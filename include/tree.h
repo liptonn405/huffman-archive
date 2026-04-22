@@ -7,7 +7,7 @@ struct Node {
 
     Node(unsigned char symbl, int count) : symbl(symbl), count(count), left(nullptr), right(nullptr) {}
 
-    bool isLeaf() {
+     bool isLeaf() const {
         return (left == nullptr && right == nullptr);
     }
 };
