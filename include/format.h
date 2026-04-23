@@ -4,8 +4,8 @@
 
 constexpr char MAGIC[4] = {'H','U', 'F', 'F'};
 
-struct Header {
-    char magic[4];
+class Header {
+    std::array<char, 4> magic;
+    std::array<uint64_t, MAX_SYMBOLS> freq;
     uint64_t originalSize;
-    uint64_t freq[MAX_SYMBOLS];
 };
