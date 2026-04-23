@@ -1,6 +1,4 @@
 #pragma once
-
-#include <cstdio>
 #include <fstream>
 
 class BitWriter {
@@ -10,17 +8,9 @@ class BitWriter {
 public:
     BitWriter(): buffer(0), bitCount(0){}
 
-    unsigned char getBuffer() const {
-        return buffer;
-    }
+    void writeBit(uint8_t bit, std::ofstream &out);
 
-    unsigned int getBitCount() const {
-        return bitCount;
-    }
-
-    void writeBit(uint8_t bit, std::fstream &out);
-
-    void flush(std::fstream &out);
+    void flush(std::ofstream &out);
 };
 
 
@@ -31,15 +21,7 @@ class BitReader {
 public:
     BitReader(): buffer(0), bitCount(0){}
 
-    unsigned char getBuffer() const {
-        return buffer;
-    }
-
-    unsigned int getBitCount() const {
-        return bitCount;
-    }
-
-    int readBit(std::fstream &in);
+    int readBit(std::ifstream &in);
 };
 
 

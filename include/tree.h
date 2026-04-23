@@ -10,7 +10,7 @@ class Node {
     std::unique_ptr<Node> right;
 
 public:
-    Node(unsigned char symbl, int count) : symbl(symbl), count(count), left(nullptr), right(nullptr) {}
+    Node(unsigned char symbl, uint64_t count) : symbl(symbl), count(count), left(nullptr), right(nullptr) {}
 
     bool isLeaf() const {
         return !left && !right;
