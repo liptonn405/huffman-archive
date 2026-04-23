@@ -7,9 +7,10 @@ include_directories(include)
 
 add_executable(huffman_archive
         src/main.cpp
-        src/tree.cpp
         src/huffman.cpp
         src/encoder.cpp
         src/decoder.cpp
         src/bitbuffer.cpp
+        include/format.h
+        include/tree.h
 )
