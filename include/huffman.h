@@ -1,6 +1,6 @@
 #pragma once
-#include <cstdio>
-#include <cstdint>
+#include <vector>
+#include <array>
 
 #include "tree.h"
 
@@ -20,13 +20,21 @@ public:
     int getLength() const {
         return length;
     }
+
+    void setCode(uint64_t c) {
+        code = c;
+    }
+
+    void setLength(int l) {
+        length = l;
+    }
 };
 
 //подсчёт частот символов
-void countFrequency(const std::string &data, size_t size, std::array<uint64_t, MAX_SYMBOLS>& freq);
+void countFrequency(const std::vector<unsigned char> &data, size_t size, std::array<uint64_t, MAX_SYMBOLS>& freq);
 
 //построение дерева Хаффмана
 Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq);
 
 //построение таблицы кодов
-void buildCodeTable(Node *root, HuffmanCode *codeTable);
+void buildCodeTable(Node *root, std::array<HuffmanCode, MAX_SYMBOLS>& codeTable);
