@@ -1,26 +1,47 @@
 #pragma once
 
 #include <cstdio>
+#include <fstream>
 
-struct BitWriter {
+class BitWriter {
     unsigned char buffer;
     unsigned int bitCount;
 
+public:
     BitWriter(): buffer(0), bitCount(0){}
 
-    void writeBit(int bit, FILE *out);
+    unsigned char getBuffer() const {
+        return buffer;
+    }
 
-    void flush(FILE *out);
+    unsigned int getBitCount() const {
+        return bitCount;
+    }
+
+    void writeBit(uint8_t bit, std::fstream &out);
+
+    void flush(std::fstream &out);
 };
 
-struct BitReader {
+
+class BitReader {
     unsigned char buffer;
     unsigned int bitCount;
 
+public:
     BitReader(): buffer(0), bitCount(0){}
 
-    int readBit(FILE *in);
+    unsigned char getBuffer() const {
+        return buffer;
+    }
+
+    unsigned int getBitCount() const {
+        return bitCount;
+    }
+
+    int readBit(std::fstream &in);
 };
+
 
 
 

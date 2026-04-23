@@ -1,4 +1,4 @@
 #pragma once
 #include "format.h"
 
-int decodeFile(const char *input, const char *output);
+int decodeFile(const std::string &input, const std::string &output);
