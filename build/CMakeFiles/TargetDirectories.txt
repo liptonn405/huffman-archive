@@ -1,0 +1,3 @@
+/home/runner/work/huffman-archive/huffman-archive/build/CMakeFiles/huffman_archive.dir
+/home/runner/work/huffman-archive/huffman-archive/build/CMakeFiles/edit_cache.dir
+/home/runner/work/huffman-archive/huffman-archive/build/CMakeFiles/rebuild_cache.dir
