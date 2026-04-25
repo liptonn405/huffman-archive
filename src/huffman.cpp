@@ -1,10 +1,6 @@
 #include "huffman.h"
-#include <vector>
 #include "tree.h"
-#include <array>
-#include <cstring>
 #include <queue>
-#include <string>
 
 void countFrequency(const std::vector<unsigned char> &data, size_t size, std::array<uint64_t, MAX_SYMBOLS>& freq) {
     for (size_t i = 0; i < size; i++) {
@@ -44,4 +40,19 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
         pq.push(node);
     }
     return pq.top();
+}
+
+void buildCodeHelper(Node* node, uint64_t code, int length, std::array<HuffmanCode, MAX_SYMBOLS>& table) {
+    if (!node) return;
+    if (node->isLeaf()) {
+        table[node->getSymbol()].setLength(length);
+        table[node->getSymbol()].setCode(code);
+        return;
+    }
+    buildCodeHelper(node->getLeft(), code << 1, length + 1, table);
+    buildCodeHelper(node->getRight(), code << 1 | 1, length + 1, table);
+}
+
+void buildCodeTable(Node *root, std::array<HuffmanCode, MAX_SYMBOLS> &codeTable) {
+    buildCodeHelper(root, 0, 0, codeTable);
 }
