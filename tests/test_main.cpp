@@ -8,5 +8,9 @@ int main() {
     RUN_TEST(test_countFrequency);
     RUN_TEST(test_buildTree);
     RUN_TEST(test_buildCodeTable);
-    return 0;
+
+    std::cout << "\n[PASSED]:" << g_testsPassed << "\n";
+    std::cout << "[FAILED]:" << g_testsFailed << "\n";
+
+    return g_testsFailed == 0 ? 0 : 1;
 }

@@ -28,7 +28,6 @@ void test_buildTree() {
         CHECK(root2->getSymbol() == 'A');
         CHECK(root2->getCount() == 32);
         CHECK(root2->isLeaf());
-        delete root2;
     }
     else {
         CHECK(false);
@@ -44,7 +43,6 @@ void test_buildTree() {
     if (root3 != nullptr) {
         CHECK(root3->getCount() == 87);
         CHECK(root3->isLeaf() == false);
-        delete root3;
     }
     else {
         CHECK(false);
@@ -69,6 +67,4 @@ void test_buildCodeTable() {
     CHECK_EQ(codeTable['D'].getLength(), 3);
     CHECK_EQ(codeTable['A'].getLength(), 3);
     CHECK_EQ(codeTable['E'].getLength(), 0);
-
-    delete root;
 }
