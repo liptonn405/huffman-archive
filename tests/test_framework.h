@@ -18,6 +18,6 @@ extern int g_testsFailed;
         int failedBefore = g_testsFailed; \
         int passedBefore = g_testsPassed;\
         func(); \
-        if(g_testsFailed == failedBefore) { std::cout << "[OK]" << #func << "\n"; } \
-        else { std::cout << "[FAILED]" << #func << "\n"; } \
+        if(g_testsFailed == failedBefore) { std::cout << "[OK] " << #func << "\n"; } \
+        else { std::cout << "[FAILED] " << #func << "\n"; } \
     }
