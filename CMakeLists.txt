@@ -13,4 +13,5 @@ add_executable(huffman_archive
         src/bitbuffer.cpp
         include/format.h
         include/tree.h
+        tests/test_framework.h
 )
