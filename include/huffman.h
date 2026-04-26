@@ -37,4 +37,4 @@ void countFrequency(const std::vector<unsigned char> &data, size_t size, std::ar
 Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq);
 
 //построение таблицы кодов
-void buildCodeTable(Node *root, std::array<HuffmanCode, MAX_SYMBOLS>& codeTable);
+void buildCodeTable(Node *root, std::array<HuffmanCode, MAX_SYMBOLS> &codeTable);

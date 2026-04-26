@@ -1,0 +1,28 @@
+name: C++ CI (Huffman Archive)
+
+on:
+  push:
+    branches: [ "main", "master", "dev" ]
+  pull_request:
+    branches: [ "main", "master", "dev" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Скачиваем репозиторий с кодом на виртуальную машину
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Создаем директорию для сборки и генерируем Makefile через CMake
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    # 3. Собираем ТОЛЬКО наши тесты (нам не нужен пока главный проект)
+    - name: Build tests
+      run: cmake --build build --target tests_bin -j $(nproc)
+
+    # 4. Запускаем скомпилированный бинарник с тестами
+    - name: Run all tests
+      run: ./build/tests_bin
