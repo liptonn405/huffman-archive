@@ -10,6 +10,9 @@ void test_bitbuffer();
 void test_bitReader();
 void test_flush();
 
+//encoder.cpp and decoder.cpp
+void test_huffman_compression();
+
 int main() {
     RUN_TEST(test_countFrequency);
     RUN_TEST(test_buildTree);
@@ -18,6 +21,7 @@ int main() {
     RUN_TEST(test_bitbuffer);
     RUN_TEST(test_bitReader);
     RUN_TEST(test_flush);
+    RUN_TEST(test_huffman_compression);
 
     std::cout << "\n[PASSED]:" << g_testsPassed << "\n";
     std::cout << "[FAILED]:" << g_testsFailed << "\n";
