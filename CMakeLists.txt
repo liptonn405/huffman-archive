@@ -29,3 +29,12 @@ add_executable(tests_bin
         src/decoder.cpp
         src/bitbuffer.cpp
 )
+
+add_executable(benchmark
+        experiments/benchmark.cpp
+        src/huffman.cpp
+        src/encoder.cpp
+        src/decoder.cpp
+        src/bitbuffer.cpp
+)
+target_include_directories(benchmark PRIVATE include)
