@@ -3,17 +3,15 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char* argv[]) {
+int main() {
 
-    if (argc != 4) {
-        std::cout << "./huffman -c <input file> <output file> encode" << std::endl;
-        std::cout << "./huffman -d <input file> <output file> decode" << std::endl;
-        return -1;
-    }
+    std::string command, input, output;
 
-    std::string command = argv[1];
-    std::string input = argv[2];
-    std::string output = argv[3];
+    std::cout << "Enter command (-c for encode, -d for decode): ", std::cin >> command;
+
+    std::cout << "Enter input file: " , std::cin >> input;
+
+    std::cout << "Enter output file: " , std::cin >> output;
 
     if (command == "-c") {
        int result = encodeFile(input, output);
