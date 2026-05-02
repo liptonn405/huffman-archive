@@ -43,3 +43,12 @@
 # IDE
 .idea/
 *.iml
+
+experiments/results/*.huff
+experiments/results/*.txt
+experiments/results/*.bin
+experiments/results/*.zip
+experiments/results/*.csv
+experiments/data/binary.bin
+experiments/data/compressed.zip
+cmake-build-debug/
