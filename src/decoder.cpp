@@ -19,6 +19,11 @@ int decodeFile(const std::string &input, const std::string &output) {
         return -1;
     }
     std::array<uint64_t, MAX_SYMBOLS> freq = header.getFreq();
+    if (header.getMagic()[0] != 'H' || header.getMagic()[1] != 'U'||
+        header.getMagic()[2] != 'F'|| header.getMagic()[3] != 'F') {
+        std::cerr << "Invalid file format" << std::endl;
+        return -1;
+    }
     std::unique_ptr<Node> root(buildTree(freq));
 
     if (!root) {
@@ -29,18 +34,21 @@ int decodeFile(const std::string &input, const std::string &output) {
     std::ofstream ofs(output, std::ios::out | std::ios::binary);
     BitReader reader;
 
-    for (size_t i = 0; i < header.getOriginalSize(); i++) {
+    uint64_t originalSize = header.getOriginalSize();
+    for (size_t i = 0; i < originalSize; i++) {
         Node* curr = root.get();
         while (!curr->isLeaf()) {
             int bit = reader.readBit(ifs);
             if (bit == 0) {
                 curr = curr->getLeft();
-            }
-            if (bit == 1) {
+            } else if (bit == 1) {
                 curr = curr->getRight();
+            } else {
+                std::cerr << "Error reading bit" << std::endl;
+                return -1;
             }
             if (curr == nullptr) {
-                std::cerr << "Error decoding Huffman tree!" << std::endl;
+                std::cerr << "Error decoding file!" << std::endl;
                 return -1;
             }
         }
