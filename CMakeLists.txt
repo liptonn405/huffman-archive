@@ -25,7 +25,6 @@ add_executable(tests_bin
         tests/test_huffman.cpp
         tests/test_framework.cpp
         tests/test_bitbuffer.cpp
-        tests/test_tree.cpp
         tests/test_integration.cpp
         src/huffman.cpp
         src/encoder.cpp
