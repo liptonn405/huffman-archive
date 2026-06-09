@@ -2,6 +2,7 @@
 #include "../include/huffman.h"
 #include <vector>
 #include <array>
+#include <memory>
 
 void test_countFrequency() {
     std::vector<unsigned char> data = {'A', 'B', 'A', 'B', 'C', 'B', 'A', 'B', 'C', 'C', 'C', 'C'};
@@ -17,13 +18,13 @@ void test_countFrequency() {
 
 void test_buildTree() {
     std::array<uint64_t, MAX_SYMBOLS> freq = {0};
-    Node *root = buildTree(freq);
+    std::unique_ptr<Node> root = buildTree(freq);
     CHECK(root == nullptr);
 
     std::array<uint64_t, MAX_SYMBOLS> freq2 = {0};
     freq2['A'] = 32;
 
-    Node *root2 = buildTree(freq2);
+    std::unique_ptr<Node> root2 = buildTree(freq2);
     if (root2 != nullptr) {
         CHECK(root2->getSymbol() == 'A');
         CHECK(root2->getCount() == 32);
@@ -39,7 +40,7 @@ void test_buildTree() {
     freq3['C'] = 32;
     freq3['D'] = 16;
 
-    Node* root3 = buildTree(freq3);
+    std::unique_ptr<Node> root3 = buildTree(freq3);
     if (root3 != nullptr) {
         CHECK(root3->getCount() == 87);
         CHECK(root3->isLeaf() == false);
@@ -57,10 +58,10 @@ void test_buildCodeTable() {
     freq['D'] = 16;
     freq['E'] = 0;
 
-    Node *root = buildTree(freq);
+    std::unique_ptr<Node> root = buildTree(freq);
 
     std::array<HuffmanCode, MAX_SYMBOLS> codeTable;
-    buildCodeTable(root, codeTable);
+    buildCodeTable(root.get(), codeTable);
 
     CHECK_EQ(codeTable['C'].getLength(), 1);
     CHECK_EQ(codeTable['B'].getLength(), 2);

@@ -16,7 +16,7 @@ struct Compare {
     }
 };
 
-Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
+std::unique_ptr<Node> buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
     std::priority_queue<Node*, std::vector<Node*>, Compare> pq;
 
     for (size_t i = 0; i < MAX_SYMBOLS; i++) {
@@ -29,7 +29,7 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
         return nullptr;
     }
     if (pq.size() == 1) {
-        return pq.top();
+        return std::unique_ptr<Node>(pq.top());
     }
     while (pq.size() > 1) {
         // Берём два узла с минимальной частотой
@@ -41,12 +41,12 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
         // Создаём узел с суммарной частотой
         Node *node = new Node(0, leftRaw->getCount() + rightRaw->getCount());
 
-        // Передаём владение детьми новому узлучч
+        // Передаём владение детьми новому узлу
         node->getLeftRef().reset(leftRaw);
         node->getRightRef().reset(rightRaw);
         pq.push(node);
     }
-    return pq.top();
+    return std::unique_ptr<Node>(pq.top());
 }
 
 // Рекурсивно обходит дерево Хаффмана и собирает коды для каждого символа.
