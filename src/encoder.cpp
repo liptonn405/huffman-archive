@@ -22,6 +22,11 @@ int encodeFile(const std::string &input, const std::string &output) {
     std::streamsize size = ifs.tellg();
     ifs.seekg(0, ios::beg);
 
+    if (size <= 0) {
+        std::cerr << "Error reading file" << std::endl;
+        return -1;
+    }
+
     std::vector<unsigned char> data(size);
     ifs.read(reinterpret_cast<char*>(data.data()), size);
 

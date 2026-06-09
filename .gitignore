@@ -52,3 +52,11 @@ experiments/results/*.csv
 experiments/data/binary.bin
 experiments/data/compressed.zip
 cmake-build-debug/
+
+.venv/
+.opencode/
+experiments/data/*.jpg
+experiments/data/*.mp3
+experiments/data/*.huff
+experiments/results/res.huf
+report.txt

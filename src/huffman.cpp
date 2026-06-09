@@ -4,11 +4,12 @@
 
 void countFrequency(const std::vector<unsigned char> &data, size_t size, std::array<uint64_t, MAX_SYMBOLS>& freq) {
     for (size_t i = 0; i < size; i++) {
+        // Берём текущий байт и увеличиваем его частоту.
         unsigned char symbol = static_cast<unsigned char>(data[i]);
         freq[symbol]++;
     }
 }
-
+//Компаратор для очереди с приорететатами: узлы с меньшей частотой должны иметь больший приоритет
 struct Compare {
     bool operator()(Node* a, Node* b) {
         return a->getCount() > b->getCount();
@@ -20,6 +21,7 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
 
     for (size_t i = 0; i < MAX_SYMBOLS; i++) {
         if (freq[i] > 0) {
+            // Создаём лист для каждого символа
             pq.push(new Node(static_cast<unsigned char>(i), freq[i]));
         }
     }
@@ -30,11 +32,16 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
         return pq.top();
     }
     while (pq.size() > 1) {
+        // Берём два узла с минимальной частотой
         Node* leftRaw = pq.top();
         pq.pop();
         Node* rightRaw = pq.top();
         pq.pop();
+
+        // Создаём узел с суммарной частотой
         Node *node = new Node(0, leftRaw->getCount() + rightRaw->getCount());
+
+        // Передаём владение детьми новому узлучч
         node->getLeftRef().reset(leftRaw);
         node->getRightRef().reset(rightRaw);
         pq.push(node);
