@@ -22,3 +22,19 @@ jobs:
 
     - name: Run all tests
       run: ./build/tests_bin
+
+  sanitizers:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure CMake with sanitizers
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug
+
+    - name: Build with sanitizers
+      run: cmake --build build --target tests_bin -j $(nproc)
+
+    - name: Run tests with sanitizers
+      run: ./build/tests_bin

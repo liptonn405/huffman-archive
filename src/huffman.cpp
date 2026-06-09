@@ -49,6 +49,7 @@ Node* buildTree(std::array<uint64_t, MAX_SYMBOLS>& freq) {
     return pq.top();
 }
 
+// Рекурсивно обходит дерево Хаффмана и собирает коды для каждого символа.
 void buildCodeHelper(Node* node, uint64_t code, int length, std::array<HuffmanCode, MAX_SYMBOLS>& table) {
     if (!node) return;
     if (node->isLeaf()) {
@@ -60,6 +61,7 @@ void buildCodeHelper(Node* node, uint64_t code, int length, std::array<HuffmanCo
     buildCodeHelper(node->getRight(), code << 1 | 1, length + 1, table);
 }
 
+// Строит таблицу кодов Хаффмана для всех символов по готовому дереву.
 void buildCodeTable(Node *root, std::array<HuffmanCode, MAX_SYMBOLS> &codeTable) {
     buildCodeHelper(root, 0, 0, codeTable);
 }

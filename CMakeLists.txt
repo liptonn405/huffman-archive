@@ -3,6 +3,9 @@ project(huffman_archive VERSION 1.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address,undefined -fno-omit-frame-pointer")
+set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fsanitize=address,undefined")
+
 include_directories(include)
 
 # ==== ГЛАВНАЯ ПРОГРАММА ====
