@@ -14,9 +14,13 @@ add_executable(huffman_archive
         src/huffman.cpp
         src/encoder.cpp
         src/decoder.cpp
-        src/bitbuffer.cpp
+        src/bit_writer.cpp
+        src/bit_reader.cpp
         include/format.h
         include/tree.h
+        include/huffman_code.h
+        include/bit_writer.h
+        include/bit_reader.h
 )
 
 # ==== ТЕСТЫ ====
@@ -29,7 +33,8 @@ add_executable(tests_bin
         src/huffman.cpp
         src/encoder.cpp
         src/decoder.cpp
-        src/bitbuffer.cpp
+        src/bit_writer.cpp
+        src/bit_reader.cpp
 )
 
 add_executable(benchmark
@@ -37,6 +42,7 @@ add_executable(benchmark
         src/huffman.cpp
         src/encoder.cpp
         src/decoder.cpp
-        src/bitbuffer.cpp
+        src/bit_writer.cpp
+        src/bit_reader.cpp
 )
 target_include_directories(benchmark PRIVATE include)

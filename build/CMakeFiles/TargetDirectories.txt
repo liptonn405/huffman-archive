@@ -1,0 +1,5 @@
+/mnt/c/Users/Danil/CLionProjects/huffman-archive/build/CMakeFiles/huffman_archive.dir
+/mnt/c/Users/Danil/CLionProjects/huffman-archive/build/CMakeFiles/tests_bin.dir
+/mnt/c/Users/Danil/CLionProjects/huffman-archive/build/CMakeFiles/benchmark.dir
+/mnt/c/Users/Danil/CLionProjects/huffman-archive/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Danil/CLionProjects/huffman-archive/build/CMakeFiles/rebuild_cache.dir
