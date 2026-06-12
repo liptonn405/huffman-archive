@@ -36,7 +36,7 @@ int speedTest() {
     };
 
     std::ofstream csv("experiments/results/results.csv");
-    csv << "operation,file,original_size,compressed_size,encode_avg_ms,encode_sko_ms\n";
+    csv << "operation,file,original_size,compressed_size,avg_ms,sko_ms\n";
 
     for (int i = 0; i < inputfiles.size(); i++) {
         std::vector<double> times;
