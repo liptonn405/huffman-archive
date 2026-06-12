@@ -38,3 +38,19 @@ jobs:
 
     - name: Run tests with sanitizers
       run: ./build/tests_bin
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name : Checkout repository
+        uses: actions/checkout@v4
+
+      - name : Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name : Build tests
+        run: cmake --build build --target tests_bin --config Release
+
+      - name : Run all tests
+        run: ./build/Release/tests_bin.exe

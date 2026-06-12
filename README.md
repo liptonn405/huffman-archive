@@ -15,13 +15,16 @@ huffman-archive/
 │   ├── huffman.cpp       # Алгоритм Хаффмана
 │   ├── encoder.cpp       # Сжатие файла
 │   ├── decoder.cpp       # Разжатие файла
-│   └── bitbuffer.cpp     # Побитовый ввод-вывод
+│   ├── bit_writer.cpp    # Побитовая запись
+│   └── bit_reader.cpp    # Побитовое чтение
 ├── include/              # Заголовочные файлы
 │   ├── tree.h            # Бинарное дерево
 │   ├── huffman.h         # Алгоритм Хаффмана
+│   ├── huffman_code.h    # Код Хаффмана
 │   ├── encoder.h         # Сжатие
 │   ├── decoder.h         # Разжатие
-│   ├── bitbuffer.h       # Битовый буфер
+│   ├── bit_writer.h      # Буфер записи битов
+│   ├── bit_reader.h      # Буфер чтения битов
 │   └── format.h          # Формат сжатого файла
 ├── tests/                # Модульные и интеграционные тесты
 ├── experiments/          # Эксперименты и замеры
