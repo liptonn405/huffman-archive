@@ -59,4 +59,6 @@ experiments/data/*.jpg
 experiments/data/*.mp3
 experiments/data/*.huff
 experiments/results/res.huf
-report.txt
+report.txt*.bin
+*.huff
+test*.txt
